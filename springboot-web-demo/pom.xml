@@ -9,21 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>linmsen-common</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>linmsen-common-core</module>
-        <module>linmsen-influxdb-starter</module>
-        <module>linmsen-springboot-web</module>
-        <module>linmsen-swagger-starter</module>
-        <module>linmsen-file-system</module>
-        <module>linmsen-cache-starter</module>
-        <module>linmsen-db-mybatis-plus-starter</module>
-        <module>linmsen-db-mybatis-starter</module>
-        <module>linmsen-auth-client-springboot-starter</module>
-        <module>linmsen-notify</module>
-    </modules>
-
+    <artifactId>springboot-web-demo</artifactId>
 
     <dependencyManagement>
         <dependencies>
@@ -39,8 +25,24 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
+            <artifactId>linmsen-springboot-web</artifactId>
+            <groupId>com.linmsen</groupId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <artifactId>linmsen-db-mybatis-plus-starter</artifactId>
+            <groupId>com.linmsen</groupId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <artifactId>linmsen-cache-starter</artifactId>
+            <groupId>com.linmsen</groupId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <artifactId>linmsen-swagger-starter</artifactId>
+            <groupId>com.linmsen</groupId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

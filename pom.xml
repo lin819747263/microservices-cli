@@ -13,6 +13,7 @@
         <module>linmsen-register</module>
         <module>linmsen-transaction</module>
         <module>linmsen-dependencies</module>
+        <module>springboot-web-demo</module>
     </modules>
 
     <groupId>com.linmsen</groupId>
@@ -23,6 +24,8 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
 </project>

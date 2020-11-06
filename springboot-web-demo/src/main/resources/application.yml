@@ -1,0 +1,21 @@
+
+
+linmsen:
+  swagger:
+    enable: true
+    title: 哈哈哈
+    description: 测试swagger
+    version: V1.0.1
+    basePackage: "com.linmsen"
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.99.206.79:3306/mico_demo?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
+  redis:
+    database: 1
+    port: 6379
+    host: 47.99.206.79
+server:
+  port: 8099

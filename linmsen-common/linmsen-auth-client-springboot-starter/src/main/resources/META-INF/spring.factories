@@ -1,0 +1,6 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.linmsen.oauth2.config.SecurityPropertiesConfig,\
+com.linmsen.oauth2.store.AuthDbTokenStore,\
+com.linmsen.oauth2.store.AuthRedisTokenStore,\
+com.linmsen.oauth2.store.AuthJwtTokenStore,\
+com.linmsen.oauth2.store.ResJwtTokenStore

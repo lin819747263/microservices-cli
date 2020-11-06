@@ -30,13 +30,14 @@ public class CommonResult<T> {
         return result;
     }
 //
-//    public static <T> CommonResult<T> success(T data) {
-//        CommonResult<T> result = new CommonResult<>();
+    public static <T> CommonResult<T> success(T data) {
+        CommonResult<T> result = new CommonResult<>();
 //        result.code = GlobalErrorCodeConstants.SUCCESS.getCode();
-//        result.data = data;
-//        result.message = "";
-//        return result;
-//    }
+        result.code = 0;
+        result.data = data;
+        result.message = "";
+        return result;
+    }
 
 
     public Integer getCode() {
