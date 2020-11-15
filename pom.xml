@@ -7,7 +7,6 @@
         <module>linmsen-common</module>
         <module>linmsen-docs</module>
         <module>linmsen-gateway</module>
-        <module>linmsen-job</module>
         <module>linmsen-config</module>
         <module>linmsen-monitor</module>
         <module>linmsen-register</module>

@@ -57,6 +57,12 @@
             <optional>true</optional>
         </dependency>
 
+        <dependency>
+            <groupId>com.linmsen</groupId>
+            <artifactId>linmsen-db-mybatis-plus-starter</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
         <!-- 测试相关 -->
         <dependency>
             <groupId>junit</groupId>
@@ -80,10 +86,10 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.56</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-oauth2</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-oauth2</artifactId>-->
+<!--        </dependency>-->
     </dependencies>
 
 

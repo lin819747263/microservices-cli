@@ -19,4 +19,12 @@ public class GlobalExceptionHandler {
         return CommonResult.error(ex.getCode(), ex.getMessage());
     }
 
+    @ExceptionHandler(value = Throwable.class)
+    @ResponseBody
+    public CommonResult throwableHandler(Throwable throwable) {
+//        logger.info("[serviceExceptionHandler]", ex);
+        System.out.println("我执行了");
+        return CommonResult.error(1, throwable.getMessage());
+    }
+
 }

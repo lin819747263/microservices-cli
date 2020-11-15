@@ -1,0 +1,24 @@
+
+linmsen:
+  swagger:
+    enable: true
+    title: 哈哈哈
+    description: 测试swagger
+    version: V1.0.1
+    basePackage: "com.linmsen"
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.99.206.79:3306/user-center?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.linmsen.user.model
+  global-config:
+    db-config:
+      id-type: auto
+server:
+  port: 8888

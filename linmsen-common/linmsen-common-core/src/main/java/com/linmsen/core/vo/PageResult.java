@@ -2,10 +2,12 @@ package com.linmsen.core.vo;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Builder;
 
 import java.io.Serializable;
 import java.util.List;
 
+@Builder
 @ApiModel("分页结果")
 public final class PageResult<T> implements Serializable {
 

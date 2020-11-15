@@ -22,6 +22,9 @@
         <module>linmsen-db-mybatis-starter</module>
         <module>linmsen-auth-client-springboot-starter</module>
         <module>linmsen-notify</module>
+        <module>user-center</module>
+        <module>linmsen-ribbon-starter</module>
+        <module>linmsen-dubbo-starter</module>
     </modules>
 
 
