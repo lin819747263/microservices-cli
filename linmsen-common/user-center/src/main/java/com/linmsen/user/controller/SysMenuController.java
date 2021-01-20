@@ -38,7 +38,7 @@ public class SysMenuController {
     @GetMapping("/findAlls")
     public PageResult<SysMenu> findAlls() {
         List<SysMenu> list = menuService.findAll();
-        return PageResult.<SysMenu>builder().list(list).total((long) list.size()).build();
+        return PageResult.<SysMenu>builder().list(treeBuilder(list)).total((long) list.size()).build();
     }
 
     @ApiOperation(value = "删除菜单")
@@ -106,5 +106,23 @@ public class SysMenuController {
     public PageResult<SysMenu> findOnes() {
         List<SysMenu> list = menuService.findOnes();
         return PageResult.<SysMenu>builder().list(list).total((long) list.size()).build();
+    }
+
+    public static List<SysMenu> treeBuilder(List<SysMenu> sysMenus) {
+        List<SysMenu> menus = new ArrayList<>();
+        for (SysMenu sysMenu : sysMenus) {
+            if (ObjectUtils.equals(-1L, sysMenu.getParentId())) {
+                menus.add(sysMenu);
+            }
+            for (SysMenu menu : sysMenus) {
+                if (menu.getParentId().equals(sysMenu.getId())) {
+                    if (sysMenu.getSubMenus() == null) {
+                        sysMenu.setSubMenus(new ArrayList<>());
+                    }
+                    sysMenu.getSubMenus().add(menu);
+                }
+            }
+        }
+        return menus;
     }
 }

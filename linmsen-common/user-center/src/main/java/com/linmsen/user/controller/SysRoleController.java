@@ -29,7 +29,7 @@ public class SysRoleController {
      * @param params
      * @return
      */
-    @ApiOperation(value = "后台管理查询角色")
+    @ApiOperation(value = "根据条件查询角色")
     @GetMapping("/roles")
     public PageResult<SysRole> findRoles(@RequestParam Map<String, Object> params) {
         return sysRoleService.findRoles(params);
@@ -39,7 +39,7 @@ public class SysRoleController {
      * 用户管理查询所有角色
      * @return
      */
-    @ApiOperation(value = "后台管理查询角色")
+    @ApiOperation(value = "查询所有角色")
     @GetMapping("/allRoles")
     public CommonResult<List<SysRole>> findAll() {
         List<SysRole> result = sysRoleService.findAll();

@@ -20,6 +20,6 @@ public class LoginFailHandler implements AuthenticationFailureHandler {
     @Override
     public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
         httpServletResponse.setHeader("Content-type", "application/json;charset=UTF-8");
-        httpServletResponse.getWriter().print(JSONObject.toJSON(CommonResult.error(1,"登录失败")).toString());
+        httpServletResponse.getWriter().print(JSONObject.toJSON(CommonResult.error(999,"登录失败")).toString());
     }
 }

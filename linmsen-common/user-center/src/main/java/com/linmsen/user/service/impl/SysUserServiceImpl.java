@@ -16,6 +16,7 @@ import com.linmsen.user.service.SysUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -77,16 +78,16 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
     public CommonResult updatePassword(Long id, String oldPassword, String newPassword) {
         SysUser sysUser = baseMapper.selectById(id);
         if (StrUtil.isNotBlank(oldPassword)) {
-//            if (!passwordEncoder.matches(oldPassword, sysUser.getPassword())) {
-//                return CommonResult.error(1, "旧密码错误");
-//            }
+            if (!oldPassword.equals(sysUser.getPassword())) {
+                return CommonResult.error(1, "旧密码错误");
+            }
         }
         if (StrUtil.isBlank(newPassword)) {
-//            newPassword = CommonConstant.DEF_USER_PASSWORD;
+            newPassword = "123456";
         }
         SysUser user = new SysUser();
         user.setId(id);
-//        user.setPassword(passwordEncoder.encode(newPassword));
+        user.setPassword(newPassword);
         baseMapper.updateById(user);
         return CommonResult.success("修改成功");
     }
@@ -116,19 +117,24 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
     @Override
     public CommonResult saveOrUpdateUser(SysUser sysUser) throws Exception {
-//        if (sysUser.getId() == null) {
-//            if (StringUtils.isBlank(sysUser.getType())) {
-//                sysUser.setType(UserType.BACKEND.name());
-//            }
-//            sysUser.setPassword(passwordEncoder.encode(CommonConstant.DEF_USER_PASSWORD));
-//            sysUser.setEnabled(Boolean.TRUE);
-//        }
-        String username = sysUser.getUsername();
-        boolean result = false;
+        boolean result;
+        if (sysUser.getId() == null) {
+            if (StringUtils.isBlank(sysUser.getType())) {
+                sysUser.setType("1");
+            }
+            sysUser.setPassword("123456");
+            sysUser.setEnabled(Boolean.TRUE);
+            result = save(sysUser);
+        }
 
-//                super.saveOrUpdateIdempotency(sysUser, lock
-//                , LOCK_KEY_USERNAME+username, new QueryWrapper<SysUser>().eq("username", username)
-//                , username+"已存在");
+        SysUser user = baseMapper.selectById(sysUser.getId());
+        user.setUsername(sysUser.getUsername());
+        user.setNickname(sysUser.getNickname());
+        user.setMobile(sysUser.getMobile());
+        user.setRoleId(sysUser.getRoleId());
+        user.setSex(sysUser.getSex());
+        result = saveOrUpdate(user);
+
         //更新角色
         if (result && StrUtil.isNotEmpty(sysUser.getRoleId())) {
             roleUserService.deleteUserRole(sysUser.getId(), null);
@@ -157,8 +163,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
             List<Long> userIds = list.stream().map(SysUser::getId).collect(Collectors.toList());
 
             List<SysRole> sysRoles = roleUserService.findRolesByUserIds(userIds);
-            list.forEach(u -> u.setRoles(sysRoles.stream().filter(r -> !ObjectUtils.notEqual(u.getId(), r.getUserId()))
-                    .collect(Collectors.toList())));
+            list.forEach(u -> u.setRoles(sysRoles.stream().filter(r -> !ObjectUtils.notEqual(u.getId(), r.getUserId())).collect(Collectors.toList())));
         }
         return PageResult.<SysUser>builder().list(list).total(total).build();
     }

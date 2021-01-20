@@ -25,6 +25,7 @@
         <module>user-center</module>
         <module>linmsen-ribbon-starter</module>
         <module>linmsen-dubbo-starter</module>
+        <module>linmsen-db-jpa-starter</module>
     </modules>
 
 
@@ -44,6 +45,10 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
         </dependency>
     </dependencies>
 

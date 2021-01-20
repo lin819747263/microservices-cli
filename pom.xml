@@ -13,6 +13,7 @@
         <module>linmsen-transaction</module>
         <module>linmsen-dependencies</module>
         <module>springboot-web-demo</module>
+        <module>linmsen-oauth2</module>
     </modules>
 
     <groupId>com.linmsen</groupId>

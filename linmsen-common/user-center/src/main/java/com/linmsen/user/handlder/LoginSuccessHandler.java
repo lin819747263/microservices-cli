@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -29,6 +30,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         httpServletResponse.setHeader("Content-type", "application/json;charset=UTF-8");
         UserDetails sysUser = (UserDetails)authentication.getPrincipal();
         JwtUtil.generateToken(sysUser.getUsername());
+//        httpServletResponse.addCookie(new Cookie("Authorization",JwtUtil.generateToken(sysUser.getUsername())));
         httpServletResponse.getWriter().print(JSONObject.toJSON(CommonResult.success(JwtUtil.generateToken(sysUser.getUsername()))).toString());
     }
 

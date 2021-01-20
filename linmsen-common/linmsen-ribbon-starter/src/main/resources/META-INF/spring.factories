@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.linmsen.ribbon.core.FeignAutoConfigure,\
+com.linmsen.ribbon.core.RestTemplateAutoConfigure,\
+com.linmsen.ribbon.core.filter.LbIsolationFilter,\
+com.linmsen.ribbon.core.LbIsolationAutoConfigure

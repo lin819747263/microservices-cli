@@ -14,6 +14,9 @@
 			<if test="u.nickname != null and u.nickname != ''">
 				and t.nickname like concat('%', #{u.nickname}, '%')
 			</if>
+			<if test="u.mobile != null and u.mobile != ''">
+				and t.mobile like concat('%', #{u.mobile}, '%')
+			</if>
 			<if test="u.enabled != null and u.enabled != ''">
 				and t.enabled = #{u.enabled}
 			</if>
