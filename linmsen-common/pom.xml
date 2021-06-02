@@ -26,6 +26,8 @@
         <module>linmsen-ribbon-starter</module>
         <module>linmsen-dubbo-starter</module>
         <module>linmsen-db-jpa-starter</module>
+        <module>linmsen-log-starter</module>
+        <module>linmsen-es-starter</module>
     </modules>
 
 

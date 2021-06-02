@@ -3,7 +3,7 @@ package com.linmsen.user.model;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.linmsen.core.model.SuperEntity;
+import com.linmsen.db.model.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -12,7 +12,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("sys_user")
-public class SysUser extends SuperEntity<SysRole> {
+public class SysUser extends BaseEntity<SysRole> {
     private static final long serialVersionUID = -5886012896705137070L;
 
     private String username;

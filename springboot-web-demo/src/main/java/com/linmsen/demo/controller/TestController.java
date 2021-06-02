@@ -1,45 +1,36 @@
 package com.linmsen.demo.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.linmsen.cache.template.RedisRepository;
+import com.linmsen.core.exception.ServiceException;
+import com.linmsen.core.vo.CommonResult;
+import com.linmsen.demo.dao.Video;
+import com.linmsen.demo.dao.VideoMapperPlus;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @Api("测试swagger")
 @RequestMapping("test")
 public class TestController {
 
-//    @Autowired
-//    private RedisRepository redisRepository;
-//
-//    @Autowired
-//    private VideoMapperPlus videoMapperPlus;
-//
-//    @GetMapping("/hello")
-//    @ApiOperation("hello")
-//    public CommonResult hello(){
-//        redisRepository.set("s", "hello");
-//        return CommonResult.success("Hello");
-//    }
-//
-//    @GetMapping("/sb")
-//    @ApiOperation("测试异常")
-//    public CommonResult sb(){
-//        throw new ServiceException(0,"asda");
-//    }
-//
-////    @GetMapping("findById")
-////    CommonResult findById(Long id){
-////        Video video =  videoMapper.findById(id);
-////        return CommonResult.success(video);
-////    }
-//
-//    @GetMapping("findById")
-//    CommonResult findById(){
-//        IPage<Video> page = new Page<Video>(1,2);
-//        page = videoMapperPlus.selectPage(page,null);
-////        redisRepository.set("s2", page.getRecords());
-//        return CommonResult.success(page.getRecords());
-//    }
+    @Autowired
+    private VideoMapperPlus videoMapperPlus;
+
+    @GetMapping("findById")
+    CommonResult findById(MultipartFile file){
+        QueryWrapper<Video> queryWrapper = new QueryWrapper<Video>().eq("id", 40);
+        IPage<Video> page = new Page<>(1,2);
+        page = videoMapperPlus.selectPage(page,queryWrapper);
+
+        return CommonResult.success(page.getRecords());
+    }
 }
